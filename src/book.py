@@ -31,7 +31,7 @@ class Book:
 
     # Räkna ut hur många dagar en bok är försenad
     def calculate_overdue_days(self, return_date):
-        if self.borrowed_date:
+        if self.borrowed_date: # Om boken är utlämnad
             days_overdue = (return_date - self.borrowed_date).days
             return days_overdue
         return 0

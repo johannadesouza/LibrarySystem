@@ -41,7 +41,7 @@ class TestLibrarySystem(unittest.TestCase):
         self.library.borrowBook("To Kill a Mockingbird")
         result = self.library.returnBook("To Kill a Mockingbird")
         self.assertIn("To Kill a Mockingbird", result) # Kontrollera att bokens titel finns i resultatet
-        self.assertFalse(self.library.books["To Kill a Mockingbird"].is_borrowed) # Kontrollera att boken inte är utlämnad
+        self.assertFalse(self.library.books["To Kill a Mockingbird"].is_borrowed) # Kontrollera att boken inte är utlämnad, vi vill att den ska vara False
 
     def test_returnBook_overdue(self):
         print("Test 6")
@@ -93,7 +93,8 @@ class TestLibrarySystem(unittest.TestCase):
         result = self.library.displayBorrowedBooks()
         self.assertEqual(result, 'The Great Gatsby av F. Scott Fitzgerald - Lånad i 0 dagar')
 
-    # Fortsätt med att skriva testfall för resterande metoder...
+## Det här testet funkar ju då vi bara kollar en bok som utlånad. Men skulle vi långa flere böcker så skulle det inte funka. 
+## Vi måste då skapa en lista med alla utlånade böcker och kolla ifall att boken vi vill kolla finns i den listan.
 
 if __name__ == '__main__':
-    unittest.main(verbosity=10)
+    unittest.main()

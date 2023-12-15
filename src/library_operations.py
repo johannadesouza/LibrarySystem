@@ -81,7 +81,7 @@ while is_running:
                 elif choice == "3":
                     bookTitle = input("Ange titel på boken du vill lämna tillbaka: ")
                     result = library.returnBook(bookTitle)
-                    print(result)
+                    print
 
                 elif choice == "4":
                     print("Du är nu utloggad som låntagare.")

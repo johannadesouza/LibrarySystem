@@ -35,7 +35,7 @@ class LibrarySystem:
             if title not in self.books:
                 return f"Boken {title} finns inte i vårt bibliotek."
                 
-            book = self.books[title]
+            book = self.books[title] # Hämta boken från dict med titel som nyckel och spara i variabeln book.
             if not book.is_borrowed: # Om boken inte är utlämnad
                 book.mark_as_borrowed() # Lämna ut boken.
                 return f"Boken {title} är nu utlånad."
@@ -79,13 +79,13 @@ class LibrarySystem:
 
     # Visar alla böcker i biblioteket
     def displayAllBooks(self):
-        if not self.books: # Om biblioteket är tomt
+        if not self.books: # Om biblioteket är tomt (alltså är denna true)
             return "Det finns inga böcker i biblioteket"
         
         book_list = ["Böcker i biblioteket: "]
         for title, book in self.books.items():
             status = "Utlånad" if book.is_borrowed else "Går att låna"
-            book_list.append(f"{title} av {book.author} - {status}")
+            book_list.append(f"{title} av {book.author} - {status}") 
         return '\n'.join(book_list)
 
      
@@ -119,6 +119,15 @@ class LibrarySystem:
                     return f"{title} av {book.author} - Försenad med {days_overdue} dagar"
                 else:
                     return f"{title} av {book.author} - Lånad i {borrowed_days} dagar"
+        
+        # if borrowed_books: (om det finns böcker som är utlånade)) 
+        #     return "\n".join(borrowed_book_info)
 
             else:
                 return "Inga böcker är utlånade"
+
+# Denna kod har jag misslyckats lite med, jag använder return i en for-loop vilket gör att den bara körs en gång.
+# Så den returnerar bara en bok oavsett om listan är tom eller inte.
+# Om jag skulle göra om den skulle jag lägga till en if-sats som kollar om listan är tom eller inte. 
+# Om den inte är tom så returnerar jag listan med alla böcker som är utlånade.
+# Om den är tom så returnerar jag att inga böcker är utlånade.
